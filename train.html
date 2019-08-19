@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <title>AI训练</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">AI健身</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">开始训练 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">健身达人</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">课程目录 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="搜索课程">
+                        </div>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">我的 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">训练记录</a></li>
+                                <li><a href="#">训练计划</a></li>
+                                <li><a href="#">训练课程</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="panel panel-default" style="margin: 3%">
+                <div class="panel-heading">课程：全身苏醒</div>
+                <ul class="media-list" style="margin: 5%">
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程1</h4>
+                            深蹲
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程2</h4>
+                            长跑
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程3</h4>
+                            俯卧撑
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程1</h4>
+                            深蹲
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程2</h4>
+                            长跑
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="./i/qiyu.jpg" style="width: 40px" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">琦玉老师的训练课程3</h4>
+                            俯卧撑
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-10">
+            <ol class="breadcrumb">
+                <li><a href="#">减脂</a></li>
+                <li><a href="#">全身</a></li>
+                <li class="active">全身唤醒</li>
+            </ol>
+            <div class="col-xs-6">
+                <video controls width="95%">
+                    <source src="./media/xiebuyazheng.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-xs-6">
+                <video controls width="95%">
+                    <source src="./media/xiebuyazheng.mp4" type="video/mp4">
+                </video>
+                <button type="button" onclick="get_voice()">123</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://10.213.22.180:8360/tts?appid=speaker&audiotype=3&device_id=5c14f3a672b39a43af3553ab2b03cbcc9a429873&domain=1&interval=0&language=ZH&rate=2&signature=11&spectrum=10&speed=5&user_id=speech&voice_name=xiaojun&volume=5&text=%E5%8D%A7%E8%96%AA%E5%B0%9D%E8%83%86111&access_token=111&voice=ertong&signature=11",
+        "method": "POST",
+        "headers": {
+            "User-Agent": "PostmanRuntime/7.15.2",
+            "Accept": "*/*",
+            "Cache-Control": "no-cache",
+            "Postman-Token": "fe570557-e870-4ac4-ac28-a1bf6e39b3b0,54b4c33f-d51a-497d-be44-3b06cd8aea82",
+            "Host": "10.213.22.180:8360",
+            "Accept-Encoding": "gzip, deflate",
+            "Content-Length": "",
+            "Connection": "keep-alive",
+            "cache-control": "no-cache"
+        }
+    }
+
+    function get_voice() {
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+
+
+</script>
+</html>
