@@ -8,6 +8,13 @@
 
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>AI训练</title>
+
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load Posenet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+    <script type="text/javascript" src="js/stats.min.js"></script>
+    <script type="text/javascript" src="js/demo_util.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -148,13 +155,14 @@
                 <li class="active">全身唤醒</li>
             </ol>
             <div class="col-xs-6">
-                <video controls width="95%">
-                    <source src="./media/xiebuyazheng.mp4" type="video/mp4">
-                </video>
+                <div id="main" style="display:none"> 
+                    <video id="camera_video" playsinline="" style="-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);display:none;"> </video> 
+                    <canvas id="output"> </canvas>
+                </div>
             </div>
             <div class="col-xs-6">
                 <video controls width="95%">
-                    <source src="./media/xiebuyazheng.mp4" type="video/mp4">
+                    <source src="./media/example.mp4" type="video/mp4">
                 </video>
                 <button type="button" onclick="get_voice()">123</button>
             </div>
@@ -188,7 +196,6 @@
             console.log(response);
         });
     }
-
-
 </script>
+<script src="js/camera.js"></script>
 </html>
