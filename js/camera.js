@@ -263,7 +263,7 @@ function detectPoseInRealTime(video, net) {
           flipHorizontal: flipPoseHorizontal,
           decodingMethod: 'single-person'
         });
-        console.log(pose);
+        //console.log(pose);
         poses = poses.concat(pose);
         minPoseConfidence = +guiState.singlePoseDetection.minPoseConfidence;
         minPartConfidence = +guiState.singlePoseDetection.minPartConfidence;
@@ -276,7 +276,39 @@ function detectPoseInRealTime(video, net) {
           scoreThreshold: guiState.multiPoseDetection.minPartConfidence,
           nmsRadius: guiState.multiPoseDetection.nmsRadius
         });
-        console.log(all_poses);
+        //console.log(all_poses);
+
+        var best_index = -1;
+        var max_area = 0;
+        for (var i = 0; i < all_poses.length; i++){
+
+          var left = 1000;
+          var right = 0;
+          var top = 1000;
+          var bottom = 0;
+
+          all_poses[i].keypoints.forEach(function getBest(position){
+            var pos = position['position']
+            left = Math.min(left, pos['x']);
+            right = Math.max(right, pos['x']);
+            top = Math.min(top, pos['y']);
+            bottom = Math.max(bottom, pos['y']);
+          });
+
+          var area = Math.abs((left - right) * (bottom - top));
+          if (area > max_area){
+            best_index = i;
+            max_area = area;
+          }
+          
+        }
+        console.log(best_index);
+        if (best_index != -1) {
+          // console.log("nose:"+all_poses[best_index].keypoints[0]['position']['y']+ " rightWrist:"
+          //   +all_poses[best_index].keypoints[10]['position']['y'] 
+          //   +" rightAnkle:"+all_poses[best_index].keypoints[16]['position']['y']);
+          currentPose = all_poses[best_index];
+        }
 
         poses = poses.concat(all_poses);
         minPoseConfidence = +guiState.multiPoseDetection.minPoseConfidence;
@@ -297,19 +329,19 @@ function detectPoseInRealTime(video, net) {
     // For each pose (i.e. person) detected in an image, loop through the poses
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
-    poses.forEach(({score, keypoints}) => {
-      if (score >= minPoseConfidence) {
-        if (guiState.output.showPoints) {
-          drawKeypoints(keypoints, minPartConfidence, ctx);
-        }
-        if (guiState.output.showSkeleton) {
-          drawSkeleton(keypoints, minPartConfidence, ctx);
-        }
-        if (guiState.output.showBoundingBox) {
-          drawBoundingBox(keypoints, ctx);
-        }
-      }
-    });
+    // poses.forEach(({score, keypoints}) => {
+    //   if (score >= minPoseConfidence) {
+    //     if (guiState.output.showPoints) {
+    //       drawKeypoints(keypoints, minPartConfidence, ctx);
+    //     }
+    //     if (guiState.output.showSkeleton) {
+    //       drawSkeleton(keypoints, minPartConfidence, ctx);
+    //     }
+    //     if (guiState.output.showBoundingBox) {
+    //       drawBoundingBox(keypoints, ctx);
+    //     }
+    //   }
+    // });
 
     // End monitoring code for frames per second
     stats.end();
@@ -351,6 +383,15 @@ async function bindPage() {
   setupFPS();
   detectPoseInRealTime(video, net);
 }
+
+function ReturnCurrentPose(){
+  
+  
+  return currentPose;
+}
+
+
+
 
 navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
