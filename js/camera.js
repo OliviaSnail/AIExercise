@@ -2,9 +2,8 @@ const videoWidth = 600;
 const videoHeight = 500;
 const stats = new Stats();
 
-function isMobile(){
-  return false;
-}
+/* init currentPose */
+window.currentPose = null;
 
 /**
  * Loads a the camera to be used in the demo
@@ -282,10 +281,10 @@ function detectPoseInRealTime(video, net) {
         var max_area = 0;
         for (var i = 0; i < all_poses.length; i++){
 
-          var left = 1000;
-          var right = 0;
-          var top = 1000;
-          var bottom = 0;
+          var left = 1000000;
+          var right = -1;
+          var top = 1000000;
+          var bottom = -1;
 
           all_poses[i].keypoints.forEach(function getBest(position){
             var pos = position['position']
@@ -302,7 +301,7 @@ function detectPoseInRealTime(video, net) {
           }
           
         }
-        console.log(best_index);
+        // console.log(best_index);
         if (best_index != -1) {
           // console.log("nose:"+all_poses[best_index].keypoints[0]['position']['y']+ " rightWrist:"
           //   +all_poses[best_index].keypoints[10]['position']['y'] 
@@ -384,16 +383,5 @@ async function bindPage() {
   detectPoseInRealTime(video, net);
 }
 
-function ReturnCurrentPose(){
-  
-  
-  return currentPose;
-}
-
-
-
-
 navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-// kick off the demo
-bindPage();
