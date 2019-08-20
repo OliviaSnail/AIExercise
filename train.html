@@ -204,8 +204,9 @@
         });
     }
 
-    /* get coordinates array of a pose */
-    function parsePose(pose){
+    /* get coordinates array from current pose */
+    function parsePose(){
+        var pose = window.currentPose;
         var res = new Array(pose.keypoints.length);
         for(i = 0; i < pose.keypoints.length; i++){
             x = pose.keypoints[i]['position']['x'];
