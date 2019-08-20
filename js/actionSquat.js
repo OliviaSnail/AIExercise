@@ -16,7 +16,7 @@ function compute_angle(coordinate, a, b) {
     return angle;
 }
 
-function getPartAngle() {
+function getPartAngle(coordinate) {
     var returnPartAngleArray = new Array();
     returnPartAngleArray.push(compute_angle(coordinate, 5, 7));
     returnPartAngleArray.push(compute_angle(coordinate, 6, 8));
@@ -153,5 +153,5 @@ function squatActionFilter(actionIndex, actionAngleArray) {
 
 var queueSquatAngle = new Array();
 var squatBaseAngle = [0, 0, 180, 180, 65, 65];
-var actionAngle = getPartAngle();
+var actionAngle = getPartAngle(coordinate);
 squatActionFilter(0, actionAngle);
