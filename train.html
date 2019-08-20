@@ -173,6 +173,9 @@
 
 </body>
 <script>
+    /*****************************************************************************
+     *                Please put initilizing code here                           *
+     *****************************************************************************/
     /* initilize camera */
     bindPage();
 
@@ -201,9 +204,7 @@
         });
     }
 
-    /* excercise analyse */
-    var pose = window.currentPose;
-
+    /* get coordinates array of a pose */
     function parsePose(pose){
         var res = new Array(pose.keypoints.length);
         for(i = 0; i < pose.keypoints.length; i++){
@@ -211,14 +212,11 @@
             y = pose.keypoints[i]['position']['y'];
             res[i] = [x,y];
         }
-
-        //console.log(result.keypoints[0]['position']['x']);
-
-        //console.log(arr[0]);
         return res;
     }
 
-    console.log(parseJson(pose));
-
+    /*****************************************************************************
+     *                              Main Program                                 *
+     *****************************************************************************/
 </script>
 </html>
