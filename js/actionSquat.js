@@ -62,44 +62,44 @@ function actionSquat(actionAngleArray, actionIndex) {
     var leftBodyWrongNum = 0;
     var rightBodyWrongNum = 0;
     var queueLength = 10;
-    if (queueAngle.length == queueLength) {
-        queueAngle.shift();
+    if (queueSquatAngle.length == queueLength) {
+        queueSquatAngle.shift();
     }
-    queueAngle.push(actionAngleArray);
-    if (queueAngle.length != queueLength) {
+    queueSquatAngle.push(actionAngleArray);
+    if (queueSquatAngle.length != queueLength) {
         console.log("未达到10帧");
         return resultString;
     }
-    console.log(queueAngle);
-    for (var cacheIndex in queueAngle) {
+    console.log(queueSquatAngle);
+    for (var cacheIndex in queueSquatAngle) {
         //左胳膊
-        if (!actionCorrect(queueAngle[cacheIndex], 0, actionIndex)) {
+        if (!actionCorrect(queueSquatAngle[cacheIndex], 0, actionIndex)) {
             leftArmWrongNum++;
         }
         //右胳膊
-        if (!actionCorrect(queueAngle[cacheIndex], 1, actionIndex)) {
+        if (!actionCorrect(queueSquatAngle[cacheIndex], 1, actionIndex)) {
             rightArmWrongNum++;
         }
         //左腿
-        if (!actionCorrect(queueAngle[cacheIndex], 2, actionIndex)) {
+        if (!actionCorrect(queueSquatAngle[cacheIndex], 2, actionIndex)) {
             leftLegWrongNum++;
         }
-        if (queueAngle[cacheIndex][2] > leftLegMaxAngle) {
-            leftLegMaxAngle = queueAngle[cacheIndex][2];
+        if (queueSquatAngle[cacheIndex][2] > leftLegMaxAngle) {
+            leftLegMaxAngle = queueSquatAngle[cacheIndex][2];
         }
         //右腿
-        if (!actionCorrect(queueAngle[cacheIndex], 3, actionIndex)) {
+        if (!actionCorrect(queueSquatAngle[cacheIndex], 3, actionIndex)) {
             rightLegWrongNum++;
         }
-        if (queueAngle[cacheIndex][2] > rightLegMaxAngle) {
-            rightLegMaxAngle = queueAngle[cacheIndex][3];
+        if (queueSquatAngle[cacheIndex][2] > rightLegMaxAngle) {
+            rightLegMaxAngle = queueSquatAngle[cacheIndex][3];
         }
         //左侧身体
-        //if (!actionCorrect(queueAngle[cacheIndex], 4, actionIndex)){
+        //if (!actionCorrect(queueSquatAngle[cacheIndex], 4, actionIndex)){
         //    leftBodyWrongNum++;
         //}
         //右侧身体
-        //if (!actionCorrect(queueAngle[cacheIndex], 5, actionIndex)){
+        //if (!actionCorrect(queueSquatAngle[cacheIndex], 5, actionIndex)){
         //    rightBodyWrongNum++;
         //}
     }
@@ -129,6 +129,11 @@ function actionSquat(actionAngleArray, actionIndex) {
     if (rightBodyWrongNum > 5) {
         resultString += "右侧身体动作不标准 ";
     }
+    if (resultString == "") {
+        resultString = "动作非常标准请保持";
+    } else {
+        queueSquatAngle = new Array();
+    }
     return resultString;
 }
 
@@ -146,7 +151,7 @@ function squatActionFilter(actionIndex, actionAngleArray) {
     return resultString;
 }
 
-var queueAngle = new Array();
+var queueSquatAngle = new Array();
 var squatBaseAngle = [0, 0, 180, 180, 65, 65];
 var actionAngle = getPartAngle();
 squatActionFilter(0, actionAngle);
