@@ -207,6 +207,10 @@
     /* get coordinates array from current pose */
     function parsePose(){
         var pose = window.currentPose;
+        if (pose == null){
+            // nothing detected
+            return null;
+        }
         var res = new Array(pose.keypoints.length);
         for(i = 0; i < pose.keypoints.length; i++){
             x = pose.keypoints[i]['position']['x'];

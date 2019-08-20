@@ -301,12 +301,10 @@ function detectPoseInRealTime(video, net) {
           }
           
         }
-        // console.log(best_index);
         if (best_index != -1) {
-          // console.log("nose:"+all_poses[best_index].keypoints[0]['position']['y']+ " rightWrist:"
-          //   +all_poses[best_index].keypoints[10]['position']['y'] 
-          //   +" rightAnkle:"+all_poses[best_index].keypoints[16]['position']['y']);
-          currentPose = all_poses[best_index];
+            currentPose = all_poses[best_index];
+        } else {
+            currentPose = null;
         }
 
         poses = poses.concat(all_poses);
