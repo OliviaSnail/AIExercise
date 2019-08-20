@@ -218,5 +218,19 @@
     /*****************************************************************************
      *                              Main Program                                 *
      *****************************************************************************/
+    
+    async function do_work(){
+        console.log("do_work is called");
+        // do nothing right now
+        // use await to call asynchronous operations
+    }
+
+    function main(){
+        // call do_work every 100ms
+        setInterval(do_work, 100); 
+    }
+
+    main();
+    
 </script>
 </html>
